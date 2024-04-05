@@ -31,35 +31,7 @@ const initializePassport = () => {
             !country ||
             !city
           )
-            return (null, false, { message: "Faltan datos" });
-          if (username.length < 5)
-            return (null, false, {
-              message:
-                "El nombre de usuario debe contener al menos 5 caracteres",
-            });
-          if (first_name.length < 4)
-            return (null, false, {
-              message: "El nombre debe contener al menos 4 caracteres",
-            });
-          if (last_name.length < 4)
-            return (null, false, {
-              message: "El apellido debe contener al menos 4 caracteres",
-            });
-          if (email.length < 10)
-            return (null, false, {
-              message: "El mail debe contener al menos 10 caracteres",
-            });
-          if (password.length < 8)
-            return (null, false, {
-              message: "La contraseña debe contener al menos 8 caracteres",
-            });
-          if (country.length < 4)
-            return (null, false, { message: "El país debe contener al menos 4 caracteres" });
-          if (city.length < 4)
-            return (null, false, {
-              message: "La ciudad debe contener al menos 4 caracteres",
-            });
-
+            return null, false, { message: "Faltan datos" };
           const newUser = {
             username,
             first_name,
