@@ -1,17 +1,13 @@
+import * as React from "react";
 import { Button as BaseButton, buttonClasses } from "@mui/base/Button";
 import { styled } from "@mui/system";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Register from "./screens/register";
-  
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="register" element={<Register/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
+export default function ButtonStyled({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <Button>{children}</Button>;
 }
 
 const blue = {
@@ -42,27 +38,21 @@ const Button = styled(BaseButton)(
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.5;
-  background-color: ${blue[500]};
+  background-color: #377AE6;
   padding: 8px 16px;
   border-radius: 8px;
   color: white;
   transition: all 150ms ease;
   cursor: pointer;
-  border: 1px solid ${blue[500]};
+border: none;
   box-shadow: 0 2px 1px ${
     theme.palette.mode === "dark"
       ? "rgba(0, 0, 0, 0.5)"
       : "rgba(45, 45, 60, 0.2)"
-  }, inset 0 1.5px 1px ${blue[400]}, inset 0 -2px 1px ${blue[600]};
+  }, inset 0 1.5px 1px ${blue[400]}, inset 0 -2px 1px #3844EB;
 
   &:hover {
-    background-color: ${blue[600]};
-  }
-  &.${buttonClasses.focusVisible} {
-    box-shadow: 0 0 0 4px ${
-      theme.palette.mode === "dark" ? blue[300] : blue[200]
-    };
-    outline: none;
+    background-color: #3844EB;
   }
 
   &.${buttonClasses.disabled} {
@@ -75,5 +65,3 @@ const Button = styled(BaseButton)(
   }
   `
 );
-
-export default App;
