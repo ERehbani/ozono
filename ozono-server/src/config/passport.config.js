@@ -21,6 +21,7 @@ const initializePassport = () => {
             password,
             country,
             city,
+            image
           } = req.body;
           if (
             !username ||
@@ -40,6 +41,7 @@ const initializePassport = () => {
             password: createHash(password),
             country,
             city,
+            image
           };
           let result = await UserModel.create(newUser);
           return done(null, result);

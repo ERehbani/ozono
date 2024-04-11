@@ -1,15 +1,17 @@
 import * as React from "react";
 import { Button as BaseButton, buttonClasses } from "@mui/base/Button";
 import { styled } from "@mui/system";
-
-export default function ButtonStyled({
-  children,
-}: {
+interface ButtonStyledProps {
   children: React.ReactNode;
-}) {
-  return <Button>{children}</Button>;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset" | undefined;
+  disabled?: boolean | undefined
 }
 
+export default function ButtonStyled({ children, onClick, type, disabled }: ButtonStyledProps) {
+  return <Button disabled={disabled} type={type} onClick={onClick}>{children}</Button>;
+}
+ 
 const blue = {
   200: "#99CCFF",
   300: "#66B2FF",

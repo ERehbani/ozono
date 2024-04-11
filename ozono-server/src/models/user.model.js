@@ -37,6 +37,9 @@ const userSchema = new mongoose.Schema({
   city: {
     type: String,
     required: true
+  },
+  image: {
+    type: String,
   }
 
 });

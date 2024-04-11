@@ -23,6 +23,7 @@ router.post(
       email: req.user.email,
       country: req.user.country,
       city: req.user.city,
+      image: req.user.image
     };
     return res
       .status(200)
@@ -41,7 +42,7 @@ router.post("/login", async (req, res) => {
         console.log(req.session.login);
         req.session.user = user;
         console.log(req.session.user);
-        return res.send("logueado con exito");
+        return res.json({ user });
       }
       res.status(400).send({ error: "Contraseña incorrecta ❌" });
     } else {
@@ -62,10 +63,13 @@ router.put("/:id", async (req, res) => {
   const user = await req.body;
   try {
     const result = await userController.editUser(id, user);
-    if(!result) return res.status(400).send({message: "No se pudo actualizar el usuario por ruta"})
+    if (!result)
+      return res
+        .status(400)
+        .send({ message: "No se pudo actualizar el usuario por ruta" });
     res.json({
       message: "Usuario actualizado exitosamente",
-      result
+      result,
     });
   } catch (error) {
     console.log(error);

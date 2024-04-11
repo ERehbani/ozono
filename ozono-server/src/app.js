@@ -4,6 +4,7 @@ const userRouter = require("./routes/user.route");
 const passport = require("passport");
 const initializePassport = require("./config/passport.config");
 const session = require("express-session");
+const cors = require("cors")
 const MongoStore = require("connect-mongo")
 require("../database");
 require("dotenv").config();
@@ -26,6 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 app.use("/user", userRouter);
 
 httpServer.listen(3001, () => {
