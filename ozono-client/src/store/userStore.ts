@@ -10,15 +10,17 @@ export interface UserState {
 }
 
 interface UserData {
-  username: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  country: string;
-  city: string;
-  image: string;
-}
+  user: {
+    username: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    country: string;
+    city: string;
+    image: string;
+  };
+} 
 
 interface Login {
   email: string;
@@ -38,7 +40,7 @@ const useUserStore = create(
             values
           );
           console.log(result);
-          set({ user: result.data, isAuthenticated: true });
+          set({ user: result.data.user, isAuthenticated: true });
           return true;
         } catch (error) {
           console.error(error);

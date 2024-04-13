@@ -116,10 +116,10 @@ function Register() {
   const handleImage = async (e: any) => {
     const file = e.target.files[0];
     const data = new FormData();
-  
+
     data.append("file", file);
     data.append("upload_preset", "Preset_Ozono");
-  
+
     const response = await axios.post(
       "https://api.cloudinary.com/v1_1/dmnb6cfzj/image/upload",
       data
@@ -129,38 +129,22 @@ function Register() {
     setUrlImage(newUrlImage);
     formik.setFieldValue("image", newUrlImage);
   };
-  
 
-  console.log(formik.values.image)
+  console.log(formik.values.image);
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        height: "max-content",
-        alignItems: "center",
-        width: "80%",
-        m: "10px auto 50px auto",
-        fontFamily: "sans-serif",
-      }}>
+    <div className="flex justify-center flex-col h-max items-center w-[80%] mt-3 mb-12 mx-auto font-sans">
       <ToastContainer />
-      <Typography component={"h1"} sx={{ fontSize: "40px", width: "100%" }}>
-        Registrarse
-      </Typography>
+      <h1 className="text-4xl w-full">Registrarse</h1>
 
       {urlImage && (
-        <>
-          <CardMedia
-            component="img"
-            title="image"
-            image={urlImage}
-            sx={{ width: "100px", height: "100px", borderRadius: "100%" }}
-          />
-          <ButtonStyled onClick={() => setUrlImage("")}>
-            Eliminar imagen
-          </ButtonStyled>
-        </>
+        <div className="flex gap-5 items-center">
+          <img alt="image" src={urlImage} className="w-24 h-24 rounded-full" />
+          <button
+            type="button"
+            className="py-1 px-2 flex justify-center items-center size-[30px] text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+            <img src="./svg/delete.svg" alt="delete" />
+          </button>
+        </div>
       )}
       <input type="file" accept="image/*" onChange={handleImage} />
       <FormControl>
@@ -178,8 +162,12 @@ function Register() {
             boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
             animation: `${fadeInDown} 0.5s ease-out`,
           }}>
-          <Label>Usuario</Label>
-          <StyledInput
+          <span className="w-fit inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800/30 dark:text-blue-500">
+            Usuario
+          </span>
+          <input
+            type="text"
+            className="py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-white-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.username}
@@ -188,14 +176,12 @@ function Register() {
             placeholder="Usuario"
           />
           {formik.errors.username && (
-            <FormHelperText
-              error
+            <p
+              className="text-center text-red-500"
               id="username-error"
-              sx={{
-                textAlign: "center",
-              }}>
+             >
               {formik.errors.username}
-            </FormHelperText>
+            </p>
           )}
           <Label>Nombre</Label>
           <StyledInput
@@ -320,7 +306,7 @@ function Register() {
           </ButtonStyled>
         </Box>
       </FormControl>
-    </Box>
+    </div>
   );
 }
 

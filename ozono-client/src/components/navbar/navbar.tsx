@@ -6,10 +6,7 @@ function Navbar() {
 
   const userStore = useUserStore()
   const { user } = userStore
-  console.log(user)
-  const image = user && user.image ? user.image : "";
-
-  console.log(image)
+  
   return (
     <Box component="div">
       <Box sx={{ bgcolor: "#377AE6", color: "white", height: "max-content" }}>
@@ -22,7 +19,7 @@ function Navbar() {
           <MenuSimple>
             <Box
               component={"img"}
-              src={"./chaweon.jpg"}
+              src={user.image|| './chaewon.jpg'}
               sx={{ width: "50px", borderRadius: "100%", bgcolor: 'transparent' }}
             />
           </MenuSimple>
