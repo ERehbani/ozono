@@ -1,14 +1,8 @@
 import { FormControl } from "@mui/base";
-import { Label } from "../components/input/Label";
-import { Box, keyframes, styled } from "@mui/system";
+
+import { Box, keyframes } from "@mui/system";
 import ButtonStyled from "../components/buttons/buttonStyled";
-import {
-  FormHelperText,
-  Input,
-  Typography,
-  CardMedia,
-  Button,
-} from "@mui/material";
+import { FormHelperText } from "@mui/material";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -16,61 +10,9 @@ import { Bounce, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RegisterSchema } from "../schemas/register-schema";
 import { useState } from "react";
-
-const blue = {
-  100: "#DAECFF",
-  200: "#b6daff",
-  400: "#3399FF",
-  500: "#007FFF",
-  600: "#0072E5",
-  900: "#003A75",
-};
-
-const grey = {
-  50: "#F3F6F9",
-  100: "#E5EAF2",
-  200: "#DAE2ED",
-  300: "#C7D0DD",
-  400: "#B0B8C4",
-  500: "#9DA8B7",
-  600: "#6B7A90",
-  700: "#434D5B",
-  800: "#303740",
-  900: "#1C2025",
-};
-const StyledInput = styled(Input)(
-  ({ theme }) => `
-    .MuiInput-input {
-      width: 320px;
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-      line-height: 1.5;
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-      background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-      border: 1px solid ${
-        theme.palette.mode === "dark" ? grey[700] : grey[200]
-      };
-      box-shadow: 0px 2px 2px ${
-        theme.palette.mode === "dark" ? grey[900] : grey[50]
-      };
-  
-      &:hover {
-        border-color: ${blue[400]};
-      }
-  
-      &:focus {
-        outline: 0;
-        border-color: ${blue[400]};
-        box-shadow: 0 0 0 3px ${
-          theme.palette.mode === "dark" ? blue[600] : blue[200]
-        };
-      }
-    }
-  `
-);
+import Label from "../components/form/label";
+import StyledInput from "../components/form/styledInput";
+import PasswordInput from "../components/form/passwordInput";
 
 function Register() {
   const navigate = useNavigate();
@@ -130,7 +72,7 @@ function Register() {
     formik.setFieldValue("image", newUrlImage);
   };
 
-  console.log(formik.values.image);
+  console.log(formik.values);
   return (
     <div className="flex justify-center flex-col h-max items-center w-[80%] mt-3 mb-12 mx-auto font-sans">
       <ToastContainer />
@@ -162,55 +104,46 @@ function Register() {
             boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
             animation: `${fadeInDown} 0.5s ease-out`,
           }}>
-          <span className="w-fit inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800/30 dark:text-blue-500">
-            Usuario
-          </span>
-          <input
-            type="text"
-            className="py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-white-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.username}
+          <Label>Usuario</Label>
+          <StyledInput
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.username}
             name="username"
             id="username"
             placeholder="Usuario"
+            img="./svg/username.svg"
           />
           {formik.errors.username && (
-            <p
-              className="text-center text-red-500"
-              id="username-error"
-             >
+            <p className="text-center text-red-500" id="username-error">
               {formik.errors.username}
             </p>
           )}
           <Label>Nombre</Label>
           <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.first_name}
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.first_name}
             name="first_name"
             id="first_name"
             placeholder="Nombre"
-          />{" "}
+            img="./svg/user.svg"
+          />
           {formik.errors.first_name && (
-            <FormHelperText
-              error
-              id="first_name-error"
-              sx={{
-                textAlign: "center",
-              }}>
+            <p className="text-center text-red-500" id="first_name-error">
               {formik.errors.first_name}
-            </FormHelperText>
+            </p>
           )}
           <Label>Apellido</Label>
           <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.last_name}
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.last_name}
             name="last_name"
             id="last_name"
             placeholder="Apellido"
-          />{" "}
+            img="./svg/user.svg"
+          />
           {formik.errors.last_name && (
             <FormHelperText
               error
@@ -223,13 +156,14 @@ function Register() {
           )}
           <Label>Email</Label>
           <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.email}
             name="email"
             id="email"
-            placeholder="Email"
-          />{" "}
+            placeholder="email@gmail.com"
+            img="./svg/email.svg"
+          />
           {formik.errors.email && (
             <FormHelperText
               error
@@ -242,14 +176,15 @@ function Register() {
           )}
           <Label>Contraseña</Label>
           <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.password}
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.password}
             name="password"
             id="password"
             placeholder="Contraseña"
             type="password"
           />{" "}
+          <PasswordInput/>
           {formik.errors.password && (
             <FormHelperText
               error

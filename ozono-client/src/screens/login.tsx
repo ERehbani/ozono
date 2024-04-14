@@ -6,8 +6,8 @@ import { LoginSchema } from "../schemas/register-schema";
 import { useNavigate } from "react-router-dom";
 import { toast, Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Label } from "../components/input/Label";
 import useUserStore from "../store/userStore";
+import Label from "../components/form/label";
 
 const blue = {
   100: "#DAECFF",
