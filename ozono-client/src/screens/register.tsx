@@ -13,6 +13,7 @@ import { useState } from "react";
 import Label from "../components/form/label";
 import StyledInput from "../components/form/styledInput";
 import PasswordInput from "../components/form/passwordInput";
+import CountrySelect from "../components/form/countrySelect";
 
 function Register() {
   const navigate = useNavigate();
@@ -175,16 +176,15 @@ function Register() {
             </FormHelperText>
           )}
           <Label>Contraseña</Label>
-          <StyledInput
+          <PasswordInput
             handleBlur={formik.handleBlur}
             handleChange={formik.handleChange}
             values={formik.values.password}
             name="password"
             id="password"
-            placeholder="Contraseña"
-            type="password"
-          />{" "}
-          <PasswordInput/>
+            placeholder="Password"
+            img="./svg/password.svg"
+          />
           {formik.errors.password && (
             <FormHelperText
               error
@@ -197,14 +197,17 @@ function Register() {
             </FormHelperText>
           )}
           <Label>País</Label>
-          <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.country}
+          <CountrySelect
+            handleBlur={formik.handleBlur}
+            handleChange={formik.handleChange}
+            values={formik.values.country}
             name="country"
             id="country"
-            placeholder="País"
-          />{" "}
+          />
+          <select name="country" id="country" onChange={formik.handleChange} onBlur={formik.handleBlur}>
+              <option value="argentina">Argentina</option>
+              <option value="chota">Chota</option>
+          </select>
           {formik.errors.country && (
             <FormHelperText
               error
