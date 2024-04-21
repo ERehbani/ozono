@@ -2,7 +2,7 @@ import { FormControl } from "@mui/base";
 
 import { Box, keyframes } from "@mui/system";
 import ButtonStyled from "../components/buttons/buttonStyled";
-import { FormHelperText } from "@mui/material";
+
 import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -84,27 +84,17 @@ function Register() {
           <img alt="image" src={urlImage} className="w-24 h-24 rounded-full" />
           <button
             type="button"
-            className="py-1 px-2 flex justify-center items-center size-[30px] text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+            onClick={() => setUrlImage("")}
+            className="btn btn-circle w-3 h-3 flex justify-center items-center text-sm font-semibold border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
             <img src="./svg/delete.svg" alt="delete" />
           </button>
         </div>
       )}
-      <input type="file" accept="image/*" onChange={handleImage} />
+      <input type="file" accept="image/*" onChange={handleImage} className="file-input" />
       <FormControl>
-        <Box
-          component={"form"}
+        <form
           onSubmit={formik.handleSubmit}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "14px",
-            padding: "20px",
-            borderRadius: "10px",
-            maxHeight: "640.88px",
-            overflowY: "auto",
-            boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
-            animation: `${fadeInDown} 0.5s ease-out`,
-          }}>
+          className="flex flex-col gap-4 p-5 bg-white rounded-xl max-h-[640.88px] overflow-y-auto shadow-md w-[446px] max-w-[446px] animate-fade-in-down">
           <Label>Usuario</Label>
           <StyledInput
             handleBlur={formik.handleBlur}
@@ -116,9 +106,23 @@ function Register() {
             img="./svg/username.svg"
           />
           {formik.errors.username && (
-            <p className="text-center text-red-500" id="username-error">
-              {formik.errors.username}
-            </p>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.username}</span>
+            </div>
           )}
           <Label>Nombre</Label>
           <StyledInput
@@ -131,9 +135,23 @@ function Register() {
             img="./svg/user.svg"
           />
           {formik.errors.first_name && (
-            <p className="text-center text-red-500" id="first_name-error">
-              {formik.errors.first_name}
-            </p>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.first_name}</span>
+            </div>
           )}
           <Label>Apellido</Label>
           <StyledInput
@@ -146,14 +164,23 @@ function Register() {
             img="./svg/user.svg"
           />
           {formik.errors.last_name && (
-            <FormHelperText
-              error
-              id="last_name-error"
-              sx={{
-                textAlign: "center",
-              }}>
-              {formik.errors.last_name}
-            </FormHelperText>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.last_name}</span>
+            </div>
           )}
           <Label>Email</Label>
           <StyledInput
@@ -166,14 +193,23 @@ function Register() {
             img="./svg/email.svg"
           />
           {formik.errors.email && (
-            <FormHelperText
-              error
-              id="email-error"
-              sx={{
-                textAlign: "center",
-              }}>
-              {formik.errors.email}
-            </FormHelperText>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.email}</span>
+            </div>
           )}
           <Label>Contraseña</Label>
           <PasswordInput
@@ -186,15 +222,23 @@ function Register() {
             img="./svg/password.svg"
           />
           {formik.errors.password && (
-            <FormHelperText
-              error
-              id="password-error"
-              sx={{
-                textAlign: "center",
-                maxWidth: "346px",
-              }}>
-              {formik.errors.password}
-            </FormHelperText>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.password}</span>
+            </div>
           )}
           <Label>País</Label>
           <CountrySelect
@@ -204,19 +248,24 @@ function Register() {
             name="country"
             id="country"
           />
-          <select name="country" id="country" onChange={formik.handleChange} onBlur={formik.handleBlur}>
-              <option value="argentina">Argentina</option>
-              <option value="chota">Chota</option>
-          </select>
           {formik.errors.country && (
-            <FormHelperText
-              error
-              id="country-error"
-              sx={{
-                textAlign: "center",
-              }}>
-              {formik.errors.country}
-            </FormHelperText>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.country}</span>
+            </div>
           )}
           <Label>Ciudad</Label>
           <StyledInput
@@ -226,38 +275,36 @@ function Register() {
             name="city"
             id="city"
             placeholder="Ciudad"
-          />{" "}
+            img="./svg/map-pin.svg"
+          />
           {formik.errors.city && (
-            <FormHelperText
-              error
-              id="city-error"
-              sx={{
-                textAlign: "center",
-              }}>
-              {formik.errors.city}
-            </FormHelperText>
+            <div
+              role="alert"
+              className="alert alert-error max-w-full max-h-14 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-xs">{formik.errors.city}</span>
+            </div>
           )}
           <ButtonStyled
             disabled={!(formik.dirty && formik.isValid)}
             type="submit">
             Registrarse
           </ButtonStyled>
-        </Box>
+        </form>
       </FormControl>
     </div>
   );
 }
-
-const fadeInDown = keyframes`
-  from {
-    opacity: 0;
-    transform: translate3d(0, -5%, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-`;
 
 export default Register;
