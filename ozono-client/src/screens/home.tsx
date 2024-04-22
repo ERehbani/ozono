@@ -5,7 +5,7 @@ function Home() {
   const userStore = useUserStore();
   console.log(userStore);
   return (
-    <div className="">
+    <div className="bg-white">
       <h1 className="text-3xl font-bold underline">hola</h1>
       <button
         type="button"

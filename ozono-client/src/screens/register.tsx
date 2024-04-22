@@ -1,6 +1,3 @@
-import { FormControl } from "@mui/base";
-
-import { Box, keyframes } from "@mui/system";
 import ButtonStyled from "../components/buttons/buttonStyled";
 
 import { useFormik } from "formik";
@@ -79,230 +76,254 @@ function Register() {
       <ToastContainer />
       <h1 className="text-4xl w-full">Registrarse</h1>
 
-      {urlImage && (
-        <div className="flex gap-5 items-center">
-          <img alt="image" src={urlImage} className="w-24 h-24 rounded-full" />
-          <button
-            type="button"
-            onClick={() => setUrlImage("")}
-            className="btn btn-circle w-3 h-3 flex justify-center items-center text-sm font-semibold border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
-            <img src="./svg/delete.svg" alt="delete" />
-          </button>
-        </div>
-      )}
-      <input type="file" accept="image/*" onChange={handleImage} className="file-input" />
-      <FormControl>
+      <div>
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col gap-4 p-5 bg-white rounded-xl max-h-[640.88px] overflow-y-auto shadow-md w-[446px] max-w-[446px] animate-fade-in-down">
-          <Label>Usuario</Label>
-          <StyledInput
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.username}
-            name="username"
-            id="username"
-            placeholder="Usuario"
-            img="./svg/username.svg"
-          />
-          {formik.errors.username && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          className="gap-4 p-5 bg-white rounded-xl shadow-md animate-fade-in-down">
+          <div className="my-4">
+            {" "}
+            {urlImage && (
+              <div className="flex justify-center gap-5 items-center">
+                <img
+                  alt="image"
+                  src={urlImage}
+                  className="w-24 h-24 rounded-full"
                 />
-              </svg>
-              <span className="text-xs">{formik.errors.username}</span>
+                <button
+                  type="button"
+                  onClick={() => setUrlImage("")}
+                  className="btn btn-circle btn-xs flex justify-center items-center font-semibold border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <img src="./svg/delete.svg" alt="delete" />
+                </button>
+              </div>
+            )}
+            <div className="bg-transparent flex justify-center w-[40%] mx-auto">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImage}
+                className="file-input input-xs bg-transparent"
+              />
             </div>
-          )}
-          <Label>Nombre</Label>
-          <StyledInput
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.first_name}
-            name="first_name"
-            id="first_name"
-            placeholder="Nombre"
-            img="./svg/user.svg"
-          />
-          {formik.errors.first_name && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.first_name}</span>
+          </div>
+
+          <div className="flex gap-16">
+            <div className="flex flex-col gap-5 max-w-[50%] w-[50%]">
+              <Label>Usuario</Label>
+              <StyledInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.username}
+                name="username"
+                id="username"
+                placeholder="Usuario"
+                img="./svg/username.svg"
+              />
+              {formik.errors.username && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.username}</span>
+                </div>
+              )}
+              <Label>Nombre</Label>
+              <StyledInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.first_name}
+                name="first_name"
+                id="first_name"
+                placeholder="Nombre"
+                img="./svg/user.svg"
+              />
+              {formik.errors.first_name && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.first_name}</span>
+                </div>
+              )}
+              <Label>Apellido</Label>
+              <StyledInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.last_name}
+                name="last_name"
+                id="last_name"
+                placeholder="Apellido"
+                img="./svg/user.svg"
+              />
+              {formik.errors.last_name && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.last_name}</span>
+                </div>
+              )}
+              <Label>Email</Label>
+              <StyledInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.email}
+                name="email"
+                id="email"
+                placeholder="email@gmail.com"
+                img="./svg/email.svg"
+              />
+              {formik.errors.email && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.email}</span>
+                </div>
+              )}
             </div>
-          )}
-          <Label>Apellido</Label>
-          <StyledInput
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.last_name}
-            name="last_name"
-            id="last_name"
-            placeholder="Apellido"
-            img="./svg/user.svg"
-          />
-          {formik.errors.last_name && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.last_name}</span>
+            <div className="flex flex-col gap-5 max-w-[50%] w-[50%]">
+              <Label>Contraseña</Label>
+              <PasswordInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.password}
+                name="password"
+                id="password"
+                placeholder="Password"
+                img="./svg/password.svg"
+              />
+              {formik.errors.password && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.password}</span>
+                </div>
+              )}
+              <Label>País</Label>
+              <CountrySelect
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.country}
+                name="country"
+                id="country"
+              />
+              {formik.errors.country && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.country}</span>
+                </div>
+              )}
+              <Label>Ciudad</Label>
+              <StyledInput
+                handleBlur={formik.handleBlur}
+                handleChange={formik.handleChange}
+                values={formik.values.city}
+                name="city"
+                id="city"
+                placeholder="Ciudad"
+                img="./svg/map-pin.svg"
+              />
+              {formik.errors.city && (
+                <div
+                  role="alert"
+                  className="alert alert-error max-w-full max-h-14 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-xs">{formik.errors.city}</span>
+                </div>
+              )}
             </div>
-          )}
-          <Label>Email</Label>
-          <StyledInput
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.email}
-            name="email"
-            id="email"
-            placeholder="email@gmail.com"
-            img="./svg/email.svg"
-          />
-          {formik.errors.email && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.email}</span>
-            </div>
-          )}
-          <Label>Contraseña</Label>
-          <PasswordInput
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.password}
-            name="password"
-            id="password"
-            placeholder="Password"
-            img="./svg/password.svg"
-          />
-          {formik.errors.password && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.password}</span>
-            </div>
-          )}
-          <Label>País</Label>
-          <CountrySelect
-            handleBlur={formik.handleBlur}
-            handleChange={formik.handleChange}
-            values={formik.values.country}
-            name="country"
-            id="country"
-          />
-          {formik.errors.country && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.country}</span>
-            </div>
-          )}
-          <Label>Ciudad</Label>
-          <StyledInput
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.city}
-            name="city"
-            id="city"
-            placeholder="Ciudad"
-            img="./svg/map-pin.svg"
-          />
-          {formik.errors.city && (
-            <div
-              role="alert"
-              className="alert alert-error max-w-full max-h-14 flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-xs">{formik.errors.city}</span>
-            </div>
-          )}
-          <ButtonStyled
-            disabled={!(formik.dirty && formik.isValid)}
-            type="submit">
-            Registrarse
-          </ButtonStyled>
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="btn hover:bg-green-500 hover:border-transparent w-full bg-green-200 border-transparent text-black">
+              Register
+            </button>
+            <p className="text-center text-black">Do you have an account? <a href="/login" className="font-bold italic">Login</a></p>
+          </div>
         </form>
-      </FormControl>
+      </div>
     </div>
   );
 }

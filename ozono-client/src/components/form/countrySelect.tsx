@@ -22,6 +22,7 @@ function CountrySelect({
       <option disabled selected>
         Elige su país
       </option>
+      
       <option value="Argentina">Argentina 🇦🇷</option>
       <option value="Brasil">Brasil 🇧🇷</option>
       <option value="Chile">Chile 🇨🇱</option>

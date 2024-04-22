@@ -3,24 +3,22 @@ import axios from "axios";
 import { persist } from "zustand/middleware";
 
 export interface UserState {
-  user: UserData | null; // Tipo del usuario, cambia esto al tipo real del usuario si lo tienes definido
+  user: UserData; // Tipo del usuario, cambia esto al tipo real del usuario si lo tienes definido
   isAuthenticated: boolean;
   login: (values: Login) => Promise<boolean>;
   logout: () => void;
 }
 
 interface UserData {
-  user: {
-    username: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    password: string;
-    country: string;
-    city: string;
-    image: string;
-  };
-} 
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  country: string;
+  city: string;
+  image: string;
+}
 
 interface Login {
   email: string;
